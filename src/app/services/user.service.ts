@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {UserCreate} from "./user-create";
+import {UserCreate} from "../user-create";
 import {catchError, retry, throwError} from "rxjs";
-import {environment} from "../environments/environment";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

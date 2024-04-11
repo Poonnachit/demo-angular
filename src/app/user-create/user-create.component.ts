@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {UserService} from "../user.service";
+import {UserService} from "../services/user.service";
 import {UserCreate} from "../user-create";
 import {Location, NgIf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
