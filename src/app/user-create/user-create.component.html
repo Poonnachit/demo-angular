@@ -1,0 +1,84 @@
+<div class="text-6xl font-bold text-center my-10">
+  Add New User
+</div>
+<div class="flex justify-center p-2">
+  <form class="w-full max-w-md" [formGroup]="userForm" (ngSubmit)="createUser()">
+    <label class="form-control w-full ">
+      <div class="label">
+        <span class="label-text">Name</span>
+      </div>
+      <input class="input input-bordered w-full" placeholder="Firstname Lastname" type="text" formControlName="name"/>
+      <div class="label" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+        <span class="label-text-alt text-error">
+          {{ name?.errors?.['required'] ? 'Name is required' : '' }}
+          {{ name?.errors?.['minlength'] ? 'Name must be at least 3 characters' : '' }}
+          {{ name?.errors?.['maxlength'] ? 'Name must be at most 40 characters' : '' }}
+        </span>
+      </div>
+    </label>
+
+    <label class="form-control w-full">
+      <div class="label">
+        <span class="label-text">Email</span>
+      </div>
+      <input class="input input-bordered w-full" placeholder="abcdef@gmail.com" type="text" formControlName="email"/>
+      <div class="label" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+        <span class="label-text-alt text-error">
+          {{ email?.errors?.['required'] ? 'Email is required' : '' }}
+          {{ email?.errors?.['email'] ? 'Email is invalid' : '' }}
+        </span>
+      </div>
+    </label>
+
+    <label class="form-control w-full">
+      <div class="label">
+        <span class="label-text">Phone</span>
+      </div>
+      <input class="input input-bordered w-full" placeholder="093XXXXXXXX" type="text" formControlName="phone"/>
+      <div class="label" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+        <span class="label-text-alt text-error">
+          {{ phone?.errors?.['required'] ? 'Name is required' : '' }}
+          {{ phone?.errors?.['minlength'] ? 'Name must be exactly 10 characters' : '' }}
+          {{ phone?.errors?.['maxlength'] ? 'Name must be exactly 10 characters' : '' }}
+        </span>
+      </div>
+    </label>
+
+
+    <button class="btn btn-primary btn-block my-4">Add User</button>
+  </form>
+</div>
+
+<dialog #CreateSuccessDialog class="modal" (close)="goBack()">
+  <div class="modal-box">
+    <h3 class="font-bold text-3xl text-success">
+      Success add new user
+    </h3>
+    <p class="py-4 text-xl text-success">
+      User has been added successfully
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<dialog #ErrorDialog class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-3xl text-error">
+      Failed to add new user
+    </h3>
+    <p class="py-4 text-xl text-error">
+      {{ errorMessage }}
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>

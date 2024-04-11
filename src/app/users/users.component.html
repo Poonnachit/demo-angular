@@ -1,0 +1,76 @@
+<div class="overflow-x-auto">
+  <div class="text-6xl font-bold text-center my-10">
+    Users List
+  </div>
+  <div class="flex justify-end my-4">
+    <button class="btn btn-primary" [routerLink]="['/create']">
+      Add User
+    </button>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="users.length === 0">
+      <td colspan="4" class="text-center">
+        No users found
+      </td>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>
+        <div class="flex gap-4">
+          <button class="btn btn-warning" [routerLink]="['edit/'+user._id]">
+            edit
+          </button>
+          <button class="btn btn-error" (click)="deleteUser(user._id)">
+            delete
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<dialog #ErrorDialog class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-3xl text-error">
+      {{ errorTitle }}
+    </h3>
+    <p class="py-4 text-xl text-error">
+      {{ errorMessage }}
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<dialog #DeleteSuccessDialog class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-3xl text-success">
+      success delete user
+    </h3>
+    <p class="py-4 text-xl text-success">
+      user has been deleted successfully
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
