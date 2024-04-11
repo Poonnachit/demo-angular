@@ -34,7 +34,7 @@
       <div class="label">
         <span class="label-text">Phone</span>
       </div>
-      <input class="input input-bordered w-full" placeholder="Firstname Lastname" type="text" formControlName="phone"/>
+      <input class="input input-bordered w-full" placeholder="093XXXXXXXX" type="text" formControlName="phone"/>
       <div class="label" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
         <span class="label-text-alt text-error">
           {{ phone?.errors?.['required'] ? 'Name is required' : '' }}
